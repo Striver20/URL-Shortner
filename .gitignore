@@ -10,6 +10,10 @@ replay_pid*
 *.iml
 /.idea/
 
+
+.env
+
+
 # === Node / React ===
 /frontend/node_modules/
 /frontend/build/
