@@ -9,8 +9,7 @@ hs_err_pid*
 replay_pid*
 *.iml
 /.idea/
-
-
+.env
 
 
 # === Node / React ===
