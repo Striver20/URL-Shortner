@@ -2,6 +2,8 @@ package com.example.urlShortner.entity;
 import jakarta.persistence.*;
 import lombok.*;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "urls")
@@ -16,8 +18,9 @@ public class Url {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "short_code", nullable = false, unique = true, length = 16)
+    @Column(name = "short_code", unique = true, nullable = true)
     private String shortCode;
+
 
     @Column(name = "original_url", nullable = false, columnDefinition = "TEXT")
     private String originalUrl;
@@ -36,6 +39,9 @@ public class Url {
 
     @Column(name = "owner")
     private String owner;
+    @OneToMany(mappedBy = "url", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<UrlClick> clicks = new ArrayList<>();
+
 
     @PrePersist
     public void prePersist() {

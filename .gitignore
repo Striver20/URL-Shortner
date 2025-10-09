@@ -1,4 +1,27 @@
+# === Java / Spring Boot ===
+/backend/target/
+*.class
+*.log
+*.jar
+*.war
+*.ear
+hs_err_pid*
+replay_pid*
 *.iml
+/.idea/
+
+# === Node / React ===
+/frontend/node_modules/
+/frontend/build/
+/frontend/.env.local
+/frontend/.env.development.local
+/frontend/.env.test.local
+/frontend/.env.production.local
+
+# === OS & IDE ===
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+.vscode/
 .idea/
-*.ipr
-*.iws
