@@ -31,6 +31,7 @@ public class Url {
     @Column(name = "expiry_date")
     private LocalDateTime expiryDate;
 
+    @Builder.Default
     @Column(name = "click_count", nullable = false)
     private Long clickCount = 0L;
 
@@ -39,6 +40,7 @@ public class Url {
 
     @Column(name = "owner")
     private String owner;
+    @Builder.Default
     @OneToMany(mappedBy = "url", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<UrlClick> clicks = new ArrayList<>();
 

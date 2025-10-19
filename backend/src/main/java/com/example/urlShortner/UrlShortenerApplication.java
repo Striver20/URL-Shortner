@@ -6,10 +6,12 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 
 @EnableScheduling
 @SpringBootApplication
-public class LmsApplication {
+public class UrlShortenerApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(LmsApplication.class, args);
+		SpringApplication.run(UrlShortenerApplication.class, args);
 	}
 
 }
+
+

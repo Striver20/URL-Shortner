@@ -7,8 +7,8 @@
     <groupId>com.example</groupId>
     <artifactId>url-shortner</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>lms</name>
-    <description>Learning Management System</description>
+    <name>URL Shortener</name>
+    <description>URL Shortening Service with Analytics and Redis Caching</description>
 
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -61,6 +61,12 @@
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <optional>true</optional>
+        </dependency>
+
+        <!-- Spring Boot Actuator for Health Checks -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
         </dependency>
 
         <!-- Swagger / OpenAPI for Spring Boot 3.x -->
