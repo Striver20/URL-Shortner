@@ -15,14 +15,14 @@ function Analytics() {
 
     try {
       const response = await axios.get(
-        `http://localhost:8080/api/v1/urls/${shortCode}/analytics`
+        `http://54.227.34.20:8080/api/v1/urls/${shortCode}/analytics`
       );
         console.log(response);
       if (response.data.error) {
         const errMsg = response.data.error;
         console.log(errMsg);
         if (errMsg.includes("expired")) {
-          window.location.href = "http://localhost:8080/expired";
+          window.location.href = "http://54.227.34.20:8080/expired";
           return;
         }
 
@@ -39,7 +39,7 @@ function Analytics() {
           err.response.data.error || err.response.data.message || "Error occurred";
 
        if (errMsg.includes("expired")) {
-          window.location.href = "http://localhost:8080/expired";
+          window.location.href = "http://54.227.34.20:8080/expired";
           return;
         }
 
