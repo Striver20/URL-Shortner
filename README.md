@@ -1,8 +1,19 @@
 # URL Shortener with Analytics 🔗
 
-A production-ready URL shortening service similar to Bitly, featuring comprehensive analytics, Redis caching, and containerized deployment.
+A production-ready URL shortening service I built to understand scalable backend architecture. Similar to services like Bitly, this application handles URL shortening with comprehensive click analytics, Redis-based caching, and is fully containerized for easy deployment.
 
 ![Spring Boot](https://img.shields.io/badge/Spring%20Boot-3.3.4-brightgreen) ![React](https://img.shields.io/badge/React-19.1-blue) ![Redis](https://img.shields.io/badge/Redis-7-red) ![MySQL](https://img.shields.io/badge/MySQL-8.0-blue) ![Docker](https://img.shields.io/badge/Docker-Enabled-2496ED)
+
+## 💡 Why I Built This
+
+During my learning journey with Spring Boot, I wanted to tackle a real-world problem that would help me understand:
+- How caching dramatically improves application performance
+- Database connection pooling and optimization
+- Building RESTful APIs with proper error handling
+- Containerization and orchestration with Docker
+- Deploying to cloud platforms (AWS EC2)
+
+This project taught me the importance of measuring performance improvements through actual benchmarking rather than just assumptions. The Redis caching layer made a measurable difference, and documenting those improvements helped me understand the "why" behind architectural decisions.
 
 ## 🚀 Features
 
@@ -75,8 +86,8 @@ _OR without Docker:_
 ### 1. Clone the Repository
 
 ```bash
-git clone <your-repo-url>
-cd "URL Shortner"
+git clone https://github.com/Striver20/URL-Shortner.git
+cd URL-Shortner
 ```
 
 ### 2. Start All Services
@@ -317,6 +328,21 @@ Deploy your URL Shortener to AWS EC2 in under 30 minutes:
 
 See [DOCKER_README.md](DOCKER_README.md) for comprehensive Docker deployment guide.
 
+## 💭 Key Learnings & Challenges
+
+### What I Learned
+- Implementing cache-aside pattern with Redis for optimal performance
+- Configuring HikariCP connection pooling to handle concurrent requests efficiently
+- Multi-stage Docker builds for optimized container sizes
+- Managing database migrations with Hibernate in production
+- Performance testing and benchmarking with Apache JMeter
+
+### Challenges Solved
+- **Redis Connection in Docker**: Initially struggled with Redis connectivity between containers. Solved by properly configuring `RedisStandaloneConfiguration` to read from environment variables.
+- **Connection Pool Tuning**: Optimized HikariCP settings after load testing revealed connection timeouts under high load.
+- **Cross-Origin Requests**: Implemented proper CORS configuration to allow frontend-backend communication.
+- **Expiry URL Handling**: Built an efficient scheduled task to clean up expired URLs without impacting performance.
+
 ## 📈 Future Enhancements
 
 - [ ] Custom short codes (user-defined aliases)
@@ -338,17 +364,25 @@ This project is licensed under the MIT License.
 
 ## 👤 Author
 
-Your Name
+**Ashit Verma**
 
-- GitHub: [@yourusername](https://github.com/yourusername)
-- LinkedIn: [Your LinkedIn](https://linkedin.com/in/yourprofile)
+- GitHub: [@Striver20](https://github.com/Striver20)
+- LinkedIn: [Ashit Verma](https://www.linkedin.com/in/ashit-verma-6b7769337)
 
 ## 🙏 Acknowledgments
 
-- Spring Boot Team for the excellent framework
-- Redis for lightning-fast caching
-- The open-source community
+- Spring Boot documentation and community for excellent resources
+- Redis for providing a powerful caching solution
+- Docker for simplifying deployment complexity
+- The open-source community for countless helpful Stack Overflow answers during debugging!
+
+## 📞 Contact & Feedback
+
+Feel free to reach out if you have questions or suggestions:
+- **GitHub**: [@Striver20](https://github.com/Striver20)
+- **LinkedIn**: [Ashit Verma](https://www.linkedin.com/in/ashit-verma-6b7769337)
+- **Email**: Open an issue on this repo
 
 ---
 
-⭐ Star this repository if you find it helpful!
+⭐ If you found this project helpful or learned something from the code, please consider starring the repository!
