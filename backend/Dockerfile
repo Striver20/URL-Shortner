@@ -15,6 +15,9 @@ RUN mvn clean package -DskipTests
 FROM eclipse-temurin:17-jre-alpine
 WORKDIR /app
 
+# Install curl for health checks
+RUN apk add --no-cache curl
+
 # Copy the built jar from build stage
 COPY --from=build /app/target/url-shortner-0.0.1-SNAPSHOT.jar app.jar
 

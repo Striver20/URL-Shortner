@@ -16,11 +16,14 @@ function Shortener() {
     setResponseData(null);
 
     try {
-      const response = await axios.post("http://localhost:8080/api/v1/shorten", {
-        url,
-        owner,
-        expiryDate,
-      });
+      const response = await axios.post(
+        "http://54.227.34.20:8080/api/v1/shorten",
+        {
+          url,
+          owner,
+          expiryDate,
+        }
+      );
 
       setResponseData(response.data); // now contains full DTO
     } catch (err) {
@@ -90,13 +93,28 @@ function Shortener() {
             </a>
 
             <div className="mt-4 text-sm text-gray-700 space-y-1">
-              <p><strong>ID:</strong> {responseData.id}</p>
-              <p><strong>Short Code:</strong> {responseData.shortCode}</p>
-              <p><strong>Original URL:</strong> {responseData.originalUrl}</p>
-              <p><strong>Owner:</strong> {responseData.owner || "N/A"}</p>
-              <p><strong>Expiry Date:</strong> {responseData.expiryDate || "No expiry"}</p>
-              <p><strong>Click Count:</strong> {responseData.clickCount}</p>
-              <p><strong>Created At:</strong> {responseData.createdAt}</p>
+              <p>
+                <strong>ID:</strong> {responseData.id}
+              </p>
+              <p>
+                <strong>Short Code:</strong> {responseData.shortCode}
+              </p>
+              <p>
+                <strong>Original URL:</strong> {responseData.originalUrl}
+              </p>
+              <p>
+                <strong>Owner:</strong> {responseData.owner || "N/A"}
+              </p>
+              <p>
+                <strong>Expiry Date:</strong>{" "}
+                {responseData.expiryDate || "No expiry"}
+              </p>
+              <p>
+                <strong>Click Count:</strong> {responseData.clickCount}
+              </p>
+              <p>
+                <strong>Created At:</strong> {responseData.createdAt}
+              </p>
             </div>
           </div>
         )}

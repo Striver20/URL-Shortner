@@ -440,6 +440,12 @@ For issues specific to this deployment:
 
 ---
 
+## Contact
+
+- **GitHub**: [@Striver20](https://github.com/Striver20/URL-Shortner)
+- **LinkedIn**: [Ashit Verma](https://www.linkedin.com/in/ashit-verma-6b7769337)
+- **Email**: ashitverma56@gmail.com
+
 **Congratulations!** Your URL Shortener is now live on AWS EC2! 🎉
 
 Update your resume to reflect the actual deployment:

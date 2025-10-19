@@ -255,3 +255,11 @@ docker rmi urlshortner-backend urlshortner-frontend
 ```bash
 docker system prune -a --volumes
 ```
+
+---
+
+## Contact
+
+- **GitHub**: [@Striver20](https://github.com/Striver20/URL-Shortner)
+- **LinkedIn**: [Ashit Verma](https://www.linkedin.com/in/ashit-verma-6b7769337)
+- **Email**: ashitverma56@gmail.com
