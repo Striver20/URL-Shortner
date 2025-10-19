@@ -70,7 +70,7 @@ services:
 
       # JPA Configuration
       SPRING_JPA_HIBERNATE_DDL_AUTO: update
-      SPRING_JPA_SHOW_SQL: false
+      SPRING_JPA_SHOW_SQL: "false"
 
       # Application Configuration
       SERVER_PORT: 8080
