@@ -6,6 +6,7 @@ import com.example.urlShortner.entity.Url;
 import com.example.urlShortner.repository.UrlRepository;
 import com.example.urlShortner.util.Base62;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -21,13 +22,16 @@ public class UrlService {
     private final CacheService cacheService;
     private final CounterService counterService;
 
+    @Value("${app.base-url:http://localhost:8080}")
+    private String baseUrl;
+
     private static final long CACHE_TTL_MINUTES = 60 * 24 * 7; // 7 days
 
     public UrlResponseDTO toDto(Url url) {
         return UrlResponseDTO.builder()
                 .id(url.getId())
                 .shortCode(url.getShortCode())
-                .shortUrl("http://localhost:8080/" + url.getShortCode()) // build shortUrl
+                .shortUrl(baseUrl + "/" + url.getShortCode()) // build shortUrl using configurable base URL
                 .originalUrl(url.getOriginalUrl())
                 .owner(url.getOwner())
                 .expiryDate(url.getExpiryDate())

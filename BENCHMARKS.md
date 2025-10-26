@@ -21,6 +21,7 @@ I ran two sets of tests to measure the impact of Redis caching:
 2. **Optimized Test (WITH Redis)**: Full stack with Redis caching enabled
 
 **Testing Method**:
+
 - Sequential HTTP requests using curl
 - Multiple iterations for statistical accuracy
 - Same endpoints tested in both scenarios
@@ -51,6 +52,7 @@ docker-compose stop redis
 | 10      | 89.891             |
 
 **Results WITHOUT Redis**:
+
 - **Average Response Time**: 91.2ms
 - **Median**: 90.8ms
 - **Standard Deviation**: 2.8ms
@@ -66,6 +68,7 @@ docker-compose stop redis
 | 5       | 147.667            |
 
 **Results WITHOUT Redis**:
+
 - **Average Response Time**: 149.2ms
 - **Median**: 148.9ms
 
@@ -93,6 +96,7 @@ docker-compose start redis
 | 10      | 12.258             |
 
 **Results WITH Redis**:
+
 - **Average Response Time**: 13.1ms
 - **Median**: 12.4ms
 - **Standard Deviation**: 2.1ms
@@ -108,6 +112,7 @@ docker-compose start redis
 | 5       | 21.863             |
 
 **Results WITH Redis**:
+
 - **Average Response Time**: 25.1ms
 - **Median**: 22.9ms
 
@@ -115,19 +120,21 @@ docker-compose start redis
 
 ### Direct Comparison
 
-| Endpoint         | WITHOUT Redis | WITH Redis | Improvement |
-| ---------------- | ------------- | ---------- | ----------- |
-| Health Check     | 91.2ms        | 13.1ms     | **85.6% faster** 🚀 |
-| URL Shortening   | 149.2ms       | 25.1ms     | **83.2% faster** 🚀 |
+| Endpoint       | WITHOUT Redis | WITH Redis | Improvement         |
+| -------------- | ------------- | ---------- | ------------------- |
+| Health Check   | 91.2ms        | 13.1ms     | **85.6% faster** 🚀 |
+| URL Shortening | 149.2ms       | 25.1ms     | **83.2% faster** 🚀 |
 
 ### Key Findings
 
 **Health Check Endpoint**:
+
 - **Without Redis**: 91.2ms average (all requests hit MySQL)
 - **With Redis**: 13.1ms average (served from cache)
 - **Performance Gain**: **6.9x faster** with Redis caching
 
 **URL Shortening Endpoint**:
+
 - **Without Redis**: 149.2ms average (database + no cache)
 - **With Redis**: 25.1ms average (database + Redis counter)
 - **Performance Gain**: **5.9x faster** with Redis caching
@@ -152,11 +159,11 @@ The numbers speak for themselves - Redis caching made a huge difference:
 
 ## Performance vs Industry Standards
 
-| Metric       | My Results (WITH Redis) | Industry Standard | Status |
-| ------------ | ----------------------- | ----------------- | ------ |
-| Health Check | 13.1ms avg              | <50ms             | ✅ Excellent   |
-| API Response | 25.1ms avg              | <100ms            | ✅ Excellent   |
-| Consistency  | 2.1ms std dev           | <10ms             | ✅ Excellent   |
+| Metric       | My Results (WITH Redis) | Industry Standard | Status       |
+| ------------ | ----------------------- | ----------------- | ------------ |
+| Health Check | 13.1ms avg              | <50ms             | ✅ Excellent |
+| API Response | 25.1ms avg              | <100ms            | ✅ Excellent |
+| Consistency  | 2.1ms std dev           | <10ms             | ✅ Excellent |
 
 ## Key Optimizations I Implemented
 

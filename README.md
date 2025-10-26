@@ -1,8 +1,8 @@
 # URL Shortener with Analytics 🔗
 
-A URL shortening service I built to learn scalable backend architecture. Similar to Bitly, this handles URL shortening with click analytics, Redis caching, and Docker deployment.
+**🚀 Live Demo:** http://54.227.34.20:3000
 
-![Spring Boot](https://img.shields.io/badge/Spring%20Boot-3.3.4-brightgreen) ![React](https://img.shields.io/badge/React-19.1-blue) ![Redis](https://img.shields.io/badge/Redis-7-red) ![MySQL](https://img.shields.io/badge/MySQL-8.0-blue) ![Docker](https://img.shields.io/badge/Docker-Enabled-2496ED)
+A URL shortening service I built to learn scalable backend architecture. Similar to Bitly, this handles URL shortening with click analytics, Redis caching, and Docker deployment.
 
 ## Why I Built This
 
@@ -42,42 +42,39 @@ The most valuable lesson was measuring performance improvements through actual t
 
 ### Backend
 
-- **Spring Boot 3.3.4** - Main framework
-- **Java 17** - Programming language
-- **MySQL 8.0** - Database
-- **Cache**: Redis 7
-- **Security**: Spring Security
-- **Documentation**: Swagger/OpenAPI
-- **Connection Pool**: HikariCP
+- **Spring Boot** - Main framework
+- **Java** - Programming language
+- **MySQL** - Database
+- **Redis** - Caching layer
+- **Spring Security** - Authentication
+- **Swagger** - API documentation
+- **HikariCP** - Connection pooling
 
 ### Frontend
 
-- **Framework**: React 19
-- **Styling**: TailwindCSS
-- **Routing**: React Router
-- **HTTP Client**: Axios
-- **Build Tool**: npm
+- **React** - Frontend framework
+- **TailwindCSS** - Styling
+- **Axios** - HTTP client
 
 ### DevOps
 
-- **Containerization**: Docker & Docker Compose
-- **Web Server**: Nginx (frontend)
-- **Build Tools**: Maven (backend), npm (frontend)
+- **Docker** - Containerization
+- **Nginx** - Web server
+- **AWS EC2** - Cloud deployment
 
 ## 📋 Prerequisites
 
-- Docker Engine 20.10+
-- Docker Compose 2.0+
+- Docker and Docker Compose
 - At least 2GB RAM
 - Ports available: 3000, 8080, 3306, 6379
 
 _OR without Docker:_
 
 - Java 17+
-- Maven 3.6+
-- Node.js 18+
-- MySQL 8.0+
-- Redis 7+
+- Maven
+- Node.js
+- MySQL
+- Redis
 
 ## 🚀 Quick Start with Docker (Recommended)
 
@@ -96,10 +93,10 @@ docker-compose up -d --build
 
 This will start:
 
-- ✅ MySQL database on port 3306
-- ✅ Redis cache on port 6379
-- ✅ Spring Boot backend on port 8080
-- ✅ React frontend on port 3000
+- MySQL database on port 3306
+- Redis cache on port 6379
+- Spring Boot backend on port 8080
+- React frontend on port 3000
 
 ### 3. Verify Services are Running
 
@@ -215,38 +212,26 @@ I ran actual benchmarks to measure the impact of Redis caching. Here's what I fo
 | URL Shortening | 149.2ms       | 25.1ms     | **83.2% faster** 🚀 |
 
 **Key Takeaways:**
+
 - **6.9x faster** health check responses with Redis caching
 - **5.9x faster** URL shortening with Redis distributed counter
 - **Sub-15ms** response times for all cached operations
 - **85%+ performance improvement** across the board
 
-### My Benchmarking Process
+### How I Tested Performance
 
-I tested the application both WITH and WITHOUT Redis to measure the actual improvement:
+I ran tests with and without Redis to measure the actual improvement:
 
-```bash
-# Test WITHOUT Redis (baseline)
-docker-compose stop redis
-curl -w "%{time_total}\n" -o /dev/null -s "http://localhost:8080/actuator/health"
-
-# Test WITH Redis (optimized)
-docker-compose start redis
-curl -w "%{time_total}\n" -o /dev/null -s "http://localhost:8080/actuator/health"
-```
-
-**Results Summary:**
 - Without Redis: 91.2ms average (all queries hit MySQL)
 - With Redis: 13.1ms average (served from cache)
 - Performance gain: **6.9x faster**
 
-### Optimizations Implemented
+### Optimizations I Implemented
 
-- **Redis Caching**: Cache-aside pattern with 7-day TTL
-- **Connection Pooling**: HikariCP with 20 max connections
-- **Database Indexing**: Optimized indexes on short_code, expiry_date, created_at
+- **Redis Caching**: Cache-aside pattern for faster lookups
+- **Connection Pooling**: HikariCP for efficient database connections
+- **Database Indexing**: Optimized indexes on key columns
 - **Distributed Counter**: Redis-based click counter for high concurrency
-
-Check out [BENCHMARKS.md](BENCHMARKS.md) for detailed performance analysis with full test data.
 
 ## 📁 Project Structure
 
@@ -317,22 +302,7 @@ I deployed this to AWS EC2 to test it in a real environment:
 4. Cloned my repo and ran `docker-compose up -d --build`
 5. Tested at `http://<ec2-public-ip>:8080`
 
-**My live application:** http://54.227.34.20:3000
-
 The deployment process taught me a lot about cloud infrastructure and how to configure services properly.
-
-**Detailed Guide:** See [aws-setup.md](aws-setup.md) for complete step-by-step instructions including:
-
-- EC2 instance configuration
-- Security group setup
-- Docker installation
-- Application deployment
-- Domain configuration
-- Backup procedures
-
-### Local Docker Deployment
-
-See [DOCKER_README.md](DOCKER_README.md) for comprehensive Docker deployment guide.
 
 ## What I Learned
 
@@ -376,13 +346,6 @@ This project is licensed under the MIT License.
 
 - GitHub: [@Striver20](https://github.com/Striver20/URL-Shortner)
 - LinkedIn: [Ashit Verma](https://www.linkedin.com/in/ashit-verma-6b7769337)
-
-## 🙏 Acknowledgments
-
-- Spring Boot documentation and community for excellent resources
-- Redis for providing a powerful caching solution
-- Docker for simplifying deployment complexity
-- The open-source community for countless helpful Stack Overflow answers during debugging!
 
 ## Contact
 

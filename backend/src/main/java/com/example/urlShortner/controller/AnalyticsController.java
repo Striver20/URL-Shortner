@@ -4,6 +4,7 @@ import com.example.urlShortner.dto.AnalyticsResponse;
 import com.example.urlShortner.entity.Url;
 import com.example.urlShortner.service.AnalyticsService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
@@ -15,6 +16,9 @@ import java.util.List;
 public class AnalyticsController {
 
     private final AnalyticsService analyticsService;
+
+    @Value("${app.base-url:http://localhost:8080}")
+    private String baseUrl;
 
     @GetMapping("/{shortCode}/analytics")
     public Object getAnalytics(@PathVariable String shortCode) {
@@ -42,7 +46,7 @@ public class AnalyticsController {
 
         return new AnalyticsResponse(
                 url.getShortCode(),
-                "http://localhost:8080/" + url.getShortCode(),
+                baseUrl + "/" + url.getShortCode(),
                 url.getOriginalUrl(),
                 url.getClickCount(),
                 url.getCreatedAt(),
